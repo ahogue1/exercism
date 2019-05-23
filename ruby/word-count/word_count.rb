@@ -9,7 +9,7 @@ class Phrase
       .downcase
       .gsub(/[^0-9a-z,'' ]/, '')
       .split(/[\s,]+/)
-      .delete_if{|word| word == ""}
+      .delete_if(&:empty?)
       .map(&method(:remove_quotes))
   end
 
