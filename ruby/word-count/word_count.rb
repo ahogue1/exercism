@@ -5,8 +5,12 @@ class Phrase
   end
 
   def words
-    phrase = @phrase.downcase.gsub(/[^0-9a-z,'' ]/, '').split(/[\s,]+/)
-    words = phrase.delete_if{|word| word == ""}
+    phrase = @phrase
+      .downcase
+      .gsub(/[^0-9a-z,'' ]/, '')
+      .split(/[\s,]+/)
+      .delete_if{|word| word == ""}
+      .map(&method(:remove_quotes))
   end
 
   def remove_quotes(word)
@@ -19,7 +23,7 @@ class Phrase
 
   def word_count
     words.each_with_object(Hash.new(0)) do |word, counts|
-      counts[remove_quotes(word)] += 1
+      counts[word] += 1
     end
   end
 
