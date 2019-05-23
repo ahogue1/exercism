@@ -6,10 +6,11 @@ class Phrase
 
   def words
     phrase = @phrase.downcase.gsub(/[^0-9a-z,'' ]/, '').split(/[\s,]+/)
+    words = phrase.delete_if{|word| word == ""}
   end
 
   def remove_quotes(word)
-    if word[0] && word[-1] == "'"
+    if word.start_with?("'") && word.end_with?("'")
         word = word[1...-1]
     else
       word
@@ -17,16 +18,11 @@ class Phrase
   end
 
   def word_count
-    counts = Hash.new(0)
-    words.each { |word|
+    words.each_with_object(Hash.new(0)) do |word, counts|
       counts[remove_quotes(word)] += 1
-         }
-    clean_counts(counts)
+    end
   end
 
-  def clean_counts(counts)
-    counts.delete_if{|word, value| word == "" }
-  end
 end
 
 
