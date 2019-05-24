@@ -5,20 +5,7 @@ class Phrase
   end
 
   def words
-    phrase = @phrase
-      .downcase
-      .gsub(/[^0-9a-z,'' ]/, '')
-      .split(/[\s,]+/)
-      .delete_if(&:empty?)
-      .map(&method(:remove_quotes))
-  end
-
-  def remove_quotes(word)
-    if word.start_with?("'") && word.end_with?("'")
-        word = word[1...-1]
-    else
-      word
-    end
+    @phrase.downcase.scan(/\b[\w']+\b/)
   end
 
   def word_count
