@@ -1,13 +1,9 @@
 class Hamming
 
-  def self.compute(dna_1, dna_2)
-    raise ArgumentError, 'DNA strands must be equal lenghts' unless dna_1.length == dna_2.length
-    count = 0
-    dna_1.chars.each_with_index do |nucl, index|
-      if nucl == dna_2.chars[index]
-        count += 1
-      end
-    end
-    dna_1.length - count
+  def self.compute(strand1, strand2)
+    raise ArgumentError, 'DNA strands must be equal lengths' unless strand1.length == strand2.length
+
+    strand1.chars.each_with_index.count { |nucl, index| nucl != strand2.chars[index] }
   end
+
 end
