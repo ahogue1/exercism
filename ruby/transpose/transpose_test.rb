@@ -45,7 +45,7 @@ class TransposeTest < Minitest::Test
   end
 
   def test_simple
-    skip
+    # skip
     input = <<~INPUT.strip
       ABC
       123
@@ -61,7 +61,7 @@ class TransposeTest < Minitest::Test
   end
 
   def test_single_line
-    skip
+    # skip
     input = <<~INPUT.strip
       Single line.
     INPUT
@@ -143,7 +143,7 @@ class TransposeTest < Minitest::Test
   end
 
   def test_mixed_line_length
-    skip
+    # skip
     input = <<~INPUT.strip
       The longest line.
       A long line.

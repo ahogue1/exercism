@@ -1,13 +1,9 @@
-require 'matrix'
-
 class Transpose
 
- def self.transpose(input)
-    matrix = Matrix[(input.split("\n").map { |row|
+  def self.transpose(input)
+    transposed_array = input.split("\n").map { |row|
       row.chars
-    })].transpose
-    # matrix.to_a #.map { |column| column }
-    matrix.to_a.map {|column| column.join }.join("\n")
+    }.transpose
+      transposed_array.delete_if {|line| line == [" "]}.map {|column| column.join }.join("\n")
   end
 end
-
