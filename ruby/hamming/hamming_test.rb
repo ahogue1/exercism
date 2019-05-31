@@ -24,7 +24,7 @@ class HammingTest < Minitest::Test
   end
 
   def test_long_different_strands
-    # skip
+        # skip
     assert_equal 9, Hamming.compute('GGACGGATTCTG', 'AGGACGGATTCT')
   end
 
