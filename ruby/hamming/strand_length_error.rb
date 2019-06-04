@@ -1,8 +1,7 @@
 class StrandLengthError < ArgumentError
 
-def intiialize
-   'DNA strands must be equal lengths'
-end
-
+  def initialize(message = 'DNA strands must be equal lengths')
+    super
+  end
 end
 
