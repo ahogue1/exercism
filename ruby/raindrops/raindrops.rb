@@ -7,11 +7,7 @@ class Raindrops
   }
 
   def self.convert(number)
-    rain = [3,5,7].select { |n| number % n == 0}.map{ |number| RAIN[number]}
-   if rain.empty?
-      number.to_s
-    else
-      rain.join
-    end
+    rain = RAIN.select { |key| number % key == 0}
+    rain.empty? ? number.to_s : rain.values.join
   end
 end
