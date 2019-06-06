@@ -7,7 +7,8 @@ class Raindrops
   }
 
   def self.convert(number)
-    rain = RAIN.select { |key| number % key == 0}
-    rain.empty? ? number.to_s : rain.values.join
+    RAIN.each_with_object(rain = '') { |(factor, note), rain| rain << note if (number % factor).zero? }
+    rain.empty? ? number.to_s : rain
+
   end
 end
