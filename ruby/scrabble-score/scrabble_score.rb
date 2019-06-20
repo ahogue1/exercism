@@ -34,10 +34,9 @@ class Scrabble
   end
 
   def score
-    score = @word.each_char.map { |letter|
+    @word.each_char.map { |letter|
       SCORES.key?(letter) ? letter = SCORES[letter] : 0
-    }
-    score.sum
+    }.sum
   end
 
   def self.score(word)
