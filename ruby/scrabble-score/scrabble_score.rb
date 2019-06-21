@@ -27,16 +27,16 @@ class Scrabble
     "X" => 8,
     "Q" => 10,
     "Z" => 10
-}
+  }
+
+  SCORES.default = 0
 
   def initialize(word)
-    @word = word.to_s.upcase
+    @word = word&.upcase || ""
   end
 
   def score
-    @word.each_char.map { |letter|
-      SCORES.key?(letter) ? letter = SCORES[letter] : 0
-    }.sum
+    @word.each_char.sum { |letter| SCORES[letter] }
   end
 
   def self.score(word)
