@@ -1,6 +1,6 @@
 class Scrabble
 
-  SCORES = {
+  LETTER_to_SCORE = {
     "A" => 1,
     "E" => 1,
     "I" => 1,
@@ -29,17 +29,18 @@ class Scrabble
     "Z" => 10
   }
 
-  SCORES.default = 0
+  LETTER_to_SCORE.default = 0
+  LETTER_to_SCORE.freeze
 
   def initialize(word)
     @word = word&.upcase || ""
   end
 
   def score
-    @word.each_char.sum { |letter| SCORES[letter] }
+    @word.each_char.sum(&LETTER_to_SCORE)
   end
 
   def self.score(word)
-    Scrabble.new(word).score
+    self.new(word).score
   end
 end
