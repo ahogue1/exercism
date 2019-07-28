@@ -11,5 +11,8 @@ const translate = {
 }
 
 export const toRna = (nucleotides) => {
- return nucleotides.split('').map(nucl => translate[nucl]).join("");
+ return nucleotides
+ .split('')
+ .map(nucl => translate[nucl])
+ .join("");
 };
