@@ -6,23 +6,21 @@
 export const convert = (number) => {
   const factors = []
   if (number % 3 === 0) {
-    if (factors.indexOf(3) === -1 ){
-      factors.push(3);
-    }
+    factors.push(3);
   }
   if (number % 5 === 0) {
-    if (factors.indexOf(5) === -1){
-      factors.push(5);
-    }
+    factors.push(5);
   }
   if (number % 7 === 0) {
-    if (factors.indexOf(7) === -1){
-      factors.push(7);
-    }
+    factors.push(7);
   }
-  const song = factors.sort((a, b) => a - b).map( factor => {
+
+  const removeDuplicates = new Set (factors);
+
+  const song = [...removeDuplicates].map( factor => {
       return notes[factor];
   }).join("");
+
     if (song === ""){
       return number.toString();
     } else {
